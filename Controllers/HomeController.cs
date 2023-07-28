@@ -15,27 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        System.Console.WriteLine("Hello World");
-        var model = new CounterViewModel();
-        model.CurrentCount = 4;
-        return View(model);
-    }
-    [HttpPost]
-    public IActionResult Inc(CounterViewModel model)
-    {
-        System.Console.WriteLine("inci " + model.CurrentCount);
-        model.CurrentCount += 1;
-        return View("Index", model);
-    }
-    public IActionResult Reset(CounterViewModel model)
-    {
-        model.CurrentCount = 0;
-        return View("Index", model);
-    }
-    public IActionResult Dec(CounterViewModel model)
-    {
-        model.CurrentCount -= 1;
-        return View("Index", model);
+        return View();
     }
     
     public IActionResult Privacy()

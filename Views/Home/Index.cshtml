@@ -3,20 +3,4 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <form method="Post">
-        <input type="hidden" asp-for="@Model.CurrentCount" value="@Model.CurrentCount" />
-        
-        <div>@Model.CurrentCount</div>
-        <button asp-controller="Home" asp-action="Inc">
-            Inc
-        </button>
-        <button asp-controller="Home" asp-action="Reset">
-            Reset
-        </button>
-        <button asp-controller="Home" asp-action="Dec">
-            Dec
-        </button>
-    </form>
-</div>
-
+<h1>Home</h1>

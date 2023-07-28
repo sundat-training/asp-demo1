@@ -1,0 +1,22 @@
+﻿@model CounterViewModel;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <form method="Post">
+        <input type="hidden" asp-for="@Model.CurrentCount" value="@Model.CurrentCount" />
+        
+        <div>@Model.CurrentCount</div>
+        <button  asp-action="Inc">
+            Inc
+        </button>
+        <button  asp-action="Reset">
+            Reset
+        </button>
+        <button  asp-action="Dec">
+            Dec
+        </button>
+    </form>
+</div>
+
