@@ -8,7 +8,7 @@ public class PersonController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    private List<Person> persons= Enumerable
+    private static List<Person> persons= Enumerable
                                 .Range(1, 10)
                                 .Select(SeedPerson)
                                 .ToList();
@@ -24,6 +24,11 @@ public class PersonController : Controller
         var model = new PersonsViewModel();
         model.Persons = persons;
         return View(model);
+    }
+    public IActionResult Delete(int id)
+    {
+        persons = persons.Where(p => p.Id != id).ToList();
+        return RedirectToAction("Index");
     }
     
     private static Person SeedPerson(int id)
