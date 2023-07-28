@@ -33,6 +33,19 @@ public class PersonController : Controller
         persons = SeedPersons(); 
         return RedirectToAction("Index");
     }
+    [HttpGet]
+    public IActionResult Create()
+    {
+        var p= new Person{        };
+        return View(p);
+    }
+    [HttpPost]
+    public IActionResult Create(Person person)
+    {
+        person.Id = persons.Max(p => p.Id) + 1;
+        persons.Add(person);
+        return RedirectToAction("Index");
+    }
 
     private static Person SeedPerson(int id)
     {
