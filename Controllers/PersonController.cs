@@ -8,10 +8,8 @@ public class PersonController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    private static List<Person> persons= Enumerable
-                                .Range(1, 10)
-                                .Select(SeedPerson)
-                                .ToList();
+    private static List<Person> persons = SeedPersons();
+
 
     public PersonController(ILogger<HomeController> logger)
     {
@@ -20,7 +18,7 @@ public class PersonController : Controller
 
     public IActionResult Index()
     {
-        
+
         var model = new PersonsViewModel();
         model.Persons = persons;
         return View(model);
@@ -30,12 +28,24 @@ public class PersonController : Controller
         persons = persons.Where(p => p.Id != id).ToList();
         return RedirectToAction("Index");
     }
-    
-    private static Person SeedPerson(int id)
+    public IActionResult Reset()
     {
-        return new Person { Id = id, Name = "John "+id, Age = 20 + id  };
+        persons = SeedPersons(); 
+        return RedirectToAction("Index");
     }
 
+    private static Person SeedPerson(int id)
+    {
+        return new Person { Id = id, Name = "John " + id, Age = 20 + id };
+    }
+
+    private static List<Person> SeedPersons()
+    {
+        return Enumerable
+                                        .Range(1, 10)
+                                        .Select(SeedPerson)
+                                        .ToList();
+    }
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
