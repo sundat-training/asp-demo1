@@ -1,0 +1,26 @@
+﻿@model PersonsViewModel;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Person</h1>
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Persons)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Age</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
